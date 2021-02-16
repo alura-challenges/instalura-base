@@ -1,13 +1,17 @@
 import { css } from 'styled-components';
-import { breakpoints } from '../index';
+import theme from '../index';
 
-export function breakpointsMedia(cssByBreakpoint) {
-  const breakpointNames = Object.keys(breakpoints);
-  return breakpointNames
-    .filter((breakpointName) => Boolean(cssByBreakpoint[breakpointName]))
-    .map((breakpointName) => css`
-    @media only screen and (min-width: ${breakpoints[breakpointName]}px) {
-      ${cssByBreakpoint[breakpointName]}
-    }
-  `);
+// console.log('theme', theme);
+const { breakpoints } = theme;
+
+export function breakpointsMedia(cssByBreakpoints) {
+  const breakpointsNames = Object.keys(cssByBreakpoints);
+  return breakpointsNames
+    .map((breakpointName) => {
+    return css`
+      @media screen and (min-width: ${breakpoints[breakpointName]}px) {
+        ${cssByBreakpoints[breakpointName]}
+      }
+    `
+  });
 }
