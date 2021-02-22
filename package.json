@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@crello/react-lottie": "^0.0.11",
     "framer-motion": "^3.2.1",
     "lodash": "^4.17.20",
     "next": "latest",
