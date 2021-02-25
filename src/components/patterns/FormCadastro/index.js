@@ -89,7 +89,7 @@ export default function FormCadastro({ propsDoModal }) {
         display="flex"
         paddingRight={{ md: '0' }}
         flex={1}
-        value={{ xs: 12, md: 5, lg: 4 }}
+        value={{ xs: 10, md: 5, lg: 4 }}
       >
         <Box
           boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
