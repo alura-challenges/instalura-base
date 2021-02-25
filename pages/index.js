@@ -9,7 +9,7 @@ import Modal from '../src/components/commons/Modal';
 import FormCadastro from '../src/components/patterns/FormCadastro';
 
 export default function Home() {
-  const [isModalOpen, setModalState] = React.useState(true);
+  const [isModalOpen, setIsModalOpen] = React.useState(true);
 
   return (
     <Box
@@ -34,7 +34,7 @@ export default function Home() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
-          setModalState(false);
+          setIsModalOpen(false);
         }}
       >
         {(propsDoModal) => (
@@ -94,7 +94,7 @@ export default function Home() {
               onClick={() => {
                 // isModalOpen = true;
                 console.log('isModalOpen', isModalOpen);
-                setModalState(!isModalOpen); // novo state sendo atribuido
+                setIsModalOpen(!isModalOpen); // novo state sendo atribuido
               }}
             >
               Cadastrar
