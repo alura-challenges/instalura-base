@@ -7,7 +7,7 @@ const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.5);
   position: fixed;
   top: 0;
   left: 0;
