@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import styled, { css } from 'styled-components';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import { Link } from '../../commons/Link';
+import Link from '../../commons/Link';
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
@@ -55,9 +55,9 @@ export default function Text({
     return (
       <TextBase
         as={Link}
-        variant={variant}
         href={href}
-      // eslint-disable-next-line react/jsx-props-no-spreading
+        variant={variant}
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       >
         {children}
@@ -82,9 +82,9 @@ export default function Text({
 
 Text.propTypes = {
   tag: PropTypes.string,
+  href: PropTypes.string,
   variant: PropTypes.string,
   children: PropTypes.node,
-  href: PropTypes.string,
 };
 
 Text.defaultProps = {
