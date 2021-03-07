@@ -29,6 +29,11 @@ export default function Menu({ onCadastrarClick }) {
       <MenuWrapper.CentralSide>
         {links.map((link) => (
           <li key={link.url}>
+            {/* <NextLink href={link.url}>
+              <a>
+                {link.texto}
+              </a>
+            </NextLink> */}
             <Text variant="smallestException" tag="a" href={link.url}>
               {link.texto}
             </Text>
