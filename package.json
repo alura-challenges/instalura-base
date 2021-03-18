@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
+    "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
     "eslint-plugin-jest": "^24.1.3",
     "framer-motion": "^3.2.1",
