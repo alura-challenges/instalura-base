@@ -8,7 +8,6 @@ import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 function HomeScreen() {
   const websitePageContext = React.useContext(WebsitePageContext);
-
   return (
     <Box
       display="flex"
