@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`config/redirects renders all current redirects 1`] = `
+Array [
+  Object {
+    "destination": "/app/login",
+    "permanent": true,
+    "source": "/login/",
+  },
+]
+`;
