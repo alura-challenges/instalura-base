@@ -2,14 +2,6 @@ import { setCookie, destroyCookie } from 'nookies';
 import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
 async function HttpClient(url, { headers, body, ...options }) {
-  console.log(url, {
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-    ...options,
-  });
   return fetch(url, {
     headers: {
       ...headers,
@@ -29,7 +21,7 @@ async function HttpClient(url, { headers, body, ...options }) {
 
 const BASE_URL = isStagingEnv
   // Back End de DEV
-  ? 'https://instalura-api-git-master-omariosouto.vercel.app'
+  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
   // Back End de PROD
   : 'https://instalura-api.omariosouto.vercel.app';
 
