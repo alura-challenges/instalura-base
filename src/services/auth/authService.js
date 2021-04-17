@@ -6,9 +6,9 @@ import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
 const BASE_URL = isStagingEnv
   // Back End de DEV
-  ? 'https://instalura-api-git-master.omariosouto.vercel.app'
+  ? 'https://instalura-api.vercel.app'
   // Back End de PROD
-  : 'https://instalura-api.omariosouto.vercel.app';
+  : 'https://instalura-api.vercel.app';
 
 export const authService = (ctx) => {
   const cookies = parseCookies(ctx);

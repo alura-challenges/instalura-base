@@ -6,7 +6,7 @@ describe('/pages/app/login/', () => {
   describe('when fill and submit a form login request', () => {
     it('go to the profile page', () => {
       // Pré Teste
-      cy.intercept('https://instalura-api-git-master.omariosouto.vercel.app')
+      cy.intercept('https://instalura-api.vercel.app')
         .as('userLogin');
 
       // Cenário
@@ -30,7 +30,7 @@ describe('/pages/app/login/', () => {
 
   // it === test que estamos fazendo
   // it('preencha os campos e vá para a página /app/profile', () => {
-  //   cy.intercept('https://instalura-api-git-master.omariosouto.vercel.app')
+  //   cy.intercept('https://instalura-api.vercel.app')
   //     .as('userLogin');
 
   //   const loginScreen = new LoginScreenPageObject(cy);
