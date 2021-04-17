@@ -55,7 +55,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const faqCategories = await fetch('https://instalura-api.vercel.appapi/content/faq')
+  const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq')
     .then(async (respostaDoServer) => {
       const resposta = await respostaDoServer.json();
       return resposta.data;
