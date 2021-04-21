@@ -55,6 +55,7 @@ export default function WebsitePageWrapper({
         {menuProps.display && (
           <Menu
             onCadastrarClick={() => setModalState(true)}
+            logged={menuProps.logged}
           />
         )}
         {children}
@@ -69,6 +70,7 @@ WebsitePageWrapper.defaultProps = {
   pageBoxProps: {},
   menuProps: {
     display: true,
+    logged: false,
   },
   messages: {},
 };
@@ -79,6 +81,7 @@ WebsitePageWrapper.propTypes = {
   }),
   menuProps: PropTypes.shape({
     display: PropTypes.bool,
+    logged: PropTypes.bool,
   }),
   pageBoxProps: PropTypes.shape({
     backgroundImage: PropTypes.string,

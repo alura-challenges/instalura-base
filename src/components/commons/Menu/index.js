@@ -20,33 +20,38 @@ const links = [
   },
 ];
 
-export default function Menu({ onCadastrarClick }) {
+export default function Menu({ onCadastrarClick, logged = false }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
         <Logo />
       </MenuWrapper.LeftSide>
       <MenuWrapper.CentralSide>
-        {links.map((link) => (
+        {!logged && links.map((link) => (
           <li key={link.url}>
-            {/* <NextLink href={link.url}>
-              <a>
-                {link.texto}
-              </a>
-            </NextLink> */}
             <Text variant="smallestException" tag="a" href={link.url}>
               {link.texto}
             </Text>
           </li>
         ))}
+        {logged && (
+          <div>Logado!</div>
+        )}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main" href="/app/login">
-          Entrar
-        </Button>
-        <Button variant="primary.main" onClick={onCadastrarClick}>
-          Cadastrar
-        </Button>
+        {!logged && (
+          <>
+            <Button ghost variant="secondary.main" href="/app/login">
+              Entrar
+            </Button>
+            <Button variant="primary.main" onClick={onCadastrarClick}>
+              Cadastrar
+            </Button>
+          </>
+        )}
+        {logged && (
+          <div>Logado!</div>
+        )}
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
@@ -54,4 +59,9 @@ export default function Menu({ onCadastrarClick }) {
 
 Menu.propTypes = {
   onCadastrarClick: PropTypes.func.isRequired,
+  logged: PropTypes.bool,
+};
+
+Menu.defaultProps = {
+  logged: false,
 };
