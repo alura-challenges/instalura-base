@@ -134,7 +134,7 @@ MenuWrapper.RightSide = styled.div`
       align-items: center;
       padding: 12px;
     `
-  }
+}
 
   ${({ logged }) => logged && breakpointsMedia({
     xs: css`

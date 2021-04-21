@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 import { Logo } from '../../../theme/Logo';
 import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
-import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 const links = [
@@ -82,15 +82,15 @@ const LoggedMenu = styled.div`
   align-items: center;
 
   ${breakpointsMedia({
-  xs: css`
+    xs: css`
         justify-content: space-between;
         width: 90%;
       `,
-  md: css`
+    md: css`
         justify-content: unset;
         width: unset;
       `,
-})}
+  })}
 `;
 
 LoggedMenu.Item = styled.div`
