@@ -5,7 +5,7 @@ import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
 function ProfilePage(props) {
   return (
-    <div>
+    <div style={{ background: 'gray', heigth: '100%' }}>
       Página de Profile!
       <pre>
         {/* {JSON.stringify(props, null, 2)} */}

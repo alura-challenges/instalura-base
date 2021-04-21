@@ -12,11 +12,16 @@ export const MenuWrapper = styled.nav`
   padding-left: 28px;
   padding-right: 28px;
   ${breakpointsMedia({
+    xs: css`
+      align-self: ${({ logged }) => (logged ? 'center' : null)};
+      margin-bottom: ${({ logged }) => (logged ? '18px' : '0px')};
+    `,
     md: css`
       justify-content: flex-start;
-      margin-top: 32px;
+      margin-top: ${({ logged }) => (logged ? '0' : '32px')};
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: ${({ logged }) => (logged ? '0px' : null)};
       width: ${({ logged }) => (logged ? '75%' : '100%')};
       padding: 0 16px;
       max-width: 768px;
@@ -27,8 +32,18 @@ export const MenuWrapper = styled.nav`
     xl: css`
       max-width: 1222px;
     `,
+  })}
+
+  ${({ logged }) => logged && breakpointsMedia({
+    md: css`
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 24px 24px 0px 0px;
+      background: #FFFFFF;
+    `,
     xs: css`
-      align-self: ${({ logged }) => (logged ? 'center' : null)};
+      box-shadow: unset;
+      border-radius: unset;
+      background: unset;
     `,
   })}
 `;
