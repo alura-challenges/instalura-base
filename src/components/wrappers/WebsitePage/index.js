@@ -59,7 +59,7 @@ export default function WebsitePageWrapper({
           />
         )}
         {children}
-        <Footer />
+        {!menuProps.logged && <Footer />}
       </Box>
     </WebsitePageContext.Provider>
   );

@@ -17,15 +17,18 @@ export const MenuWrapper = styled.nav`
       margin-top: 32px;
       margin-left: auto;
       margin-right: auto;
-      width: 100%;
+      width: ${({ logged }) => (logged ? '75%' : '100%')};
       padding: 0 16px;
       max-width: 768px;
     `,
     lg: css`
-      max-width: 1160px; 
+      max-width: 1160px;
     `,
     xl: css`
       max-width: 1222px;
+    `,
+    xs: css`
+      align-self: ${({ logged }) => (logged ? 'center' : null)};
     `,
   })}
 `;
@@ -61,7 +64,13 @@ MenuWrapper.CentralSide = styled.div`
   border-top: 1px solid #88989E;
   border-bottom: 1px solid #88989E;
   padding: 12px;
-  
+
+  ${({ logged }) => logged && breakpointsMedia({
+    xs: css`
+      display: none;
+    `,
+  })}
+
   ${breakpointsMedia({
     md: css`
       max-width: 332px;
@@ -92,7 +101,6 @@ MenuWrapper.CentralSide = styled.div`
     &:focus {
       font-weight: 500;
       color: #070C0E;
-      
     }
   }
 `;
@@ -104,6 +112,27 @@ MenuWrapper.RightSide = styled.div`
   flex: 1;
   order: 2;
   justify-content: flex-end;
+
+  ${({ logged }) => logged && css`
+      width: 100%;
+      list-style: none;
+      align-items: center;
+      margin-top: 17px;
+      padding: 12px;
+    `
+  }
+
+  ${({ logged }) => logged && breakpointsMedia({
+    xs: css`
+      position: absolute;
+      bottom: 0;
+    `,
+    md: css`
+      position: unset;
+      bottom: unset;
+    `,
+  })}
+
   ${breakpointsMedia({
     md: css`
       order: initial;

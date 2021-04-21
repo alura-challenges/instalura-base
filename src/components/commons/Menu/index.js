@@ -22,11 +22,11 @@ const links = [
 
 export default function Menu({ onCadastrarClick, logged = false }) {
   return (
-    <MenuWrapper>
-      <MenuWrapper.LeftSide>
+    <MenuWrapper logged={logged}>
+      <MenuWrapper.LeftSide logged={logged}>
         <Logo />
       </MenuWrapper.LeftSide>
-      <MenuWrapper.CentralSide>
+      <MenuWrapper.CentralSide logged={logged}>
         {!logged && links.map((link) => (
           <li key={link.url}>
             <Text variant="smallestException" tag="a" href={link.url}>
@@ -34,11 +34,8 @@ export default function Menu({ onCadastrarClick, logged = false }) {
             </Text>
           </li>
         ))}
-        {logged && (
-          <div>Logado!</div>
-        )}
       </MenuWrapper.CentralSide>
-      <MenuWrapper.RightSide>
+      <MenuWrapper.RightSide logged={logged}>
         {!logged && (
           <>
             <Button ghost variant="secondary.main" href="/app/login">
@@ -50,7 +47,17 @@ export default function Menu({ onCadastrarClick, logged = false }) {
           </>
         )}
         {logged && (
-          <div>Logado!</div>
+          <div>
+            <div>
+              Adicionar
+            </div>
+            <div>
+              Home
+            </div>
+            <div>
+              Voce
+            </div>
+          </div>
         )}
       </MenuWrapper.RightSide>
     </MenuWrapper>

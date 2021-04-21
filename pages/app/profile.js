@@ -8,7 +8,7 @@ function ProfilePage(props) {
     <div>
       Página de Profile!
       <pre>
-        {JSON.stringify(props, null, 2)}
+        {/* {JSON.stringify(props, null, 2)} */}
       </pre>
       <img src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif" alt="Nicolas Cage" />
     </div>
