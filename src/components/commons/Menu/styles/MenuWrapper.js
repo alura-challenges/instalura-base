@@ -117,7 +117,6 @@ MenuWrapper.RightSide = styled.div`
       width: 100%;
       list-style: none;
       align-items: center;
-      margin-top: 17px;
       padding: 12px;
     `
   }
@@ -126,10 +125,20 @@ MenuWrapper.RightSide = styled.div`
     xs: css`
       position: absolute;
       bottom: 0;
+      left: 0;
+      right: 0px;
+      justify-content: center;
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 24px 24px 0px 0px;
+      background: #FFFFFF;
     `,
     md: css`
       position: unset;
       bottom: unset;
+      justify-content: flex-end;
+      box-shadow: unset;
+      border-radius: unset;
+      background: unset;
     `,
   })}
 

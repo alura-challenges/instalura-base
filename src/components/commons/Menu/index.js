@@ -4,6 +4,8 @@ import { Logo } from '../../../theme/Logo';
 import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
+import styled, { css } from 'styled-components';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 const links = [
   {
@@ -47,17 +49,17 @@ export default function Menu({ onCadastrarClick, logged = false }) {
           </>
         )}
         {logged && (
-          <div>
-            <div>
-              Adicionar
-            </div>
-            <div>
-              Home
-            </div>
-            <div>
+          <LoggedMenu>
+            <LoggedMenu.Item>
+              <AddButton />
+            </LoggedMenu.Item>
+            <LoggedMenu.Item>
+              <HomeButton />
+            </LoggedMenu.Item>
+            <LoggedMenu.Item>
               Voce
-            </div>
-          </div>
+            </LoggedMenu.Item>
+          </LoggedMenu>
         )}
       </MenuWrapper.RightSide>
     </MenuWrapper>
@@ -72,3 +74,69 @@ Menu.propTypes = {
 Menu.defaultProps = {
   logged: false,
 };
+
+const LoggedMenu = styled.div`
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+  align-items: center;
+
+  ${breakpointsMedia({
+  xs: css`
+        justify-content: space-between;
+        width: 90%;
+      `,
+  md: css`
+        justify-content: unset;
+        width: unset;
+      `,
+})}
+`;
+
+LoggedMenu.Item = styled.div`
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const AddButton = styled.button`
+  width:32px;
+  height:32px;
+  border-radius:100%;
+  position:relative;
+  margin:4px;
+  display:inline-block;
+  vertical-align:middle;
+  background: #FB7B6B;
+  box-shadow: 0px 0px 12px rgba(251, 123, 107, 0.3);
+  border: unset;
+
+  &:before, &:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#FFFFFF;
+  }
+
+  &:before {
+    width: 2px;
+    margin: 6px auto;
+  }
+
+  &:after {
+    height: 2px;
+    margin: auto 6px;
+  }
+`;
+
+const HomeButton = () => (
+  <svg width="32px" heigth="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.42 10.18L12.71 2.3a1 1 0 0 0-1.42 0l-7.71 7.89A2 2 0 0 0 3 11.62V20a2 2 0 0 0 1.89 2h14.22A2 2 0 0 0 21 20v-8.38a2.07 2.07 0 0 0-.58-1.44zM10 20v-6h4v6zm9 0h-3v-7a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v7H5v-8.42l7-7.15 7 7.19z" fill="#070C0E" />
+  </svg>
+);
