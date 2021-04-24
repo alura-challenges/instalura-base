@@ -7,6 +7,7 @@ import { Box } from '../../src/components/foundation/layout/Box';
 import Text from '../../src/components/foundation/Text';
 
 function ProfilePage(props) {
+  // eslint-disable-next-line no-console
   console.log(JSON.stringify(props, null, 2));
 
   return (
