@@ -10,6 +10,7 @@ import FormCadastro from '../../patterns/FormCadastro';
 import SEO from '../../commons/SEO';
 
 import { WebsitePageContext } from './context';
+import { MobilePadding } from './hoc/MobilePadding';
 
 export { WebsitePageContext } from './context';
 
@@ -59,6 +60,7 @@ export default function WebsitePageWrapper({
           />
         )}
         {children}
+        {menuProps.logged && <MobilePadding />}
         {!menuProps.logged && <Footer />}
       </Box>
     </WebsitePageContext.Provider>

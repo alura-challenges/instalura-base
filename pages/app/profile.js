@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { authService } from '../../src/services/auth/authService';
 import { userService } from '../../src/services/user/userService';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 import { Box } from '../../src/components/foundation/layout/Box';
 import { ProfileInfo } from '../../src/components/commons/ProfileInfo';
+import { ProfileImages } from '../../src/components/commons/ProfileImages';
 
-function ProfilePage(props) {
+function ProfilePage({ posts }) {
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify(props, null, 2));
+  console.log(JSON.stringify(posts, null, 2));
 
   return (
     <Box
@@ -16,9 +18,25 @@ function ProfilePage(props) {
       width="100%"
     >
       <ProfileInfo />
+      <ProfileImages images={posts} />
     </Box>
   );
 }
+
+ProfilePage.propTypes = {
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      description: PropTypes.string,
+      photoUrl: PropTypes.string,
+      filter: PropTypes.string,
+      user: PropTypes.string,
+      likes: [],
+      createdAt: PropTypes.string,
+      updatedAt: PropTypes.string,
+    }),
+  ).isRequired,
+};
 
 export default websitePageHOC(ProfilePage, {
   pageWrapperProps: {
