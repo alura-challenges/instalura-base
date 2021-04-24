@@ -18,7 +18,7 @@ export const MenuWrapper = styled.nav`
     `,
     md: css`
       justify-content: flex-start;
-      margin-top: ${({ logged }) => (logged ? '0' : '32px')};
+      margin-top: ${({ logged }) => (logged ? '-5px' : '32px')};
       margin-left: auto;
       margin-right: auto;
       margin-bottom: ${({ logged }) => (logged ? '0px' : null)};

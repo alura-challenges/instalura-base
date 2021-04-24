@@ -150,7 +150,7 @@ const HomeButton = () => (
   </svg>
 );
 
-const Avatar = styled.div`
+export const Avatar = styled.div`
   background: url(https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif);
   background-repeat: no-repeat;
   background-size: cover;
