@@ -31,6 +31,8 @@ const Container = styled.div`
   ${propToStyle('display')}
   ${propToStyle('flex')}
   ${propToStyle('alignItems')}
+  ${propToStyle('paddingLeft')}
+  ${propToStyle('paddingRight')}
 `;
 
 export const Grid = {
@@ -153,6 +155,9 @@ export const Grid = {
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
+    ${propToStyle('paddingRight')}
+    ${propToStyle('paddingBottom')}
+    ${propToStyle('paddingLeft')}
     ${propToStyle('paddingRight')}
   `,
 };

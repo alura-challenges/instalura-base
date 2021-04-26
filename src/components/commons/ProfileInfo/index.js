@@ -63,7 +63,7 @@ function ProfileMainImage() {
         xs: '15vh',
         md: '15vw',
       }}
-      position="relative"
+      // position="relative"
     >
       <img
         src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif"
@@ -170,6 +170,7 @@ function ProfileNameDescription({ mobile }) {
     </Box>
   );
 }
+
 ProfileNameDescription.propTypes = {
   mobile: PropTypes.bool,
 };

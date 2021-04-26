@@ -9,7 +9,7 @@ import { ProfileImages } from '../../src/components/commons/ProfileImages';
 
 function ProfilePage({ posts }) {
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify(posts, null, 2));
+  // console.log(JSON.stringify(posts, null, 2));
 
   return (
     <Box

@@ -6,6 +6,7 @@ import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { AddImageModal } from './AddImageModal';
 
 const links = [
   {
@@ -51,7 +52,7 @@ export default function Menu({ onCadastrarClick, logged = false }) {
         {logged && (
           <LoggedMenu>
             <LoggedMenu.Item mobileOrder={2}>
-              <AddButton />
+              <AddImageModal />
             </LoggedMenu.Item>
             <LoggedMenu.Item mobileOrder={1}>
               <HomeButton />
@@ -109,39 +110,6 @@ LoggedMenu.Item = styled.div`
       margin: 16px;
     `,
   })}
-`;
-
-const AddButton = styled.button`
-  width:32px;
-  height:32px;
-  border-radius:100%;
-  position:relative;
-  margin:4px;
-  display:inline-block;
-  vertical-align:middle;
-  background: #FB7B6B;
-  box-shadow: 0px 0px 12px rgba(251, 123, 107, 0.3);
-  border: unset;
-
-  &:before, &:after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:#FFFFFF;
-  }
-
-  &:before {
-    width: 2px;
-    margin: 6px auto;
-  }
-
-  &:after {
-    height: 2px;
-    margin: auto 6px;
-  }
 `;
 
 const HomeButton = () => (
