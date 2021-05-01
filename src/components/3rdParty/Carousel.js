@@ -1,4 +1,5 @@
 /* eslint-disable */
+/* Source: https://bit.dev/limio/landing/carousel/~code#index.js */
 import React from 'react';
 
 export class Carousel extends React.Component {
