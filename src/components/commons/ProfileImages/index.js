@@ -42,13 +42,7 @@ export function ProfileImages({ images }) {
                 md: '16px',
               }}
             >
-              <img
-                src={image.photoUrl}
-                alt={image.alt}
-                width="100%"
-                height="100%"
-                loading="lazy"
-              />
+              <ProfilePostsImages image={image} />
             </Grid.Col>
           ))}
         </Grid.Row>
@@ -72,3 +66,26 @@ ProfileImages.propTypes = {
     }),
   ).isRequired,
 };
+
+function ProfilePostsImages({ image }) {
+  return (
+    <img
+      src={image.photoUrl}
+      alt={image.alt}
+      width="100%"
+      height="100%"
+      loading="lazy"
+    />
+  );
+}
+
+ProfilePostsImages.propTypes = PropTypes.shape({
+  _id: PropTypes.string,
+  description: PropTypes.string,
+  photoUrl: PropTypes.string,
+  filter: PropTypes.string,
+  user: PropTypes.string,
+  likes: [],
+  createdAt: PropTypes.string,
+  updatedAt: PropTypes.string,
+}).isRequired;

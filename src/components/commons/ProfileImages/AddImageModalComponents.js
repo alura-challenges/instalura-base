@@ -1,49 +1,7 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import { Box } from '../../foundation/layout/Box';
-import Modal from '../Modal';
 
-export function AddImageModal() {
-  const [modalOpen, setModalOpen] = React.useState(false);
-
-  return (
-    <>
-      <AddButton onClick={() => setModalOpen(true)} />
-      <Modal
-        isOpen={modalOpen}
-        onClose={() => {
-          setModalOpen(false);
-        }}
-      >
-        {(propsDoModal) => (
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          <Box {...propsDoModal}>
-            <AddImageModalWrapper>
-              <AddImageModalWrapper.Top>
-                <AddImageModalWrapper.Top.Button
-                  type="button"
-                  onClick={() => setModalOpen(false)}
-                >
-                  x
-                </AddImageModalWrapper.Top.Button>
-              </AddImageModalWrapper.Top>
-              <AddImageModalWrapper.Image />
-              <AddImageModalWrapper.Shenanigan>
-                shenanigans
-              </AddImageModalWrapper.Shenanigan>
-              <AddImageModalWrapper.Button>
-                botao
-              </AddImageModalWrapper.Button>
-            </AddImageModalWrapper>
-          </Box>
-        )}
-      </Modal>
-    </>
-  );
-}
-
-const AddImageModalWrapper = styled.div`
+export const AddImageModalWrapper = styled.div`
   position: absolute;
   align-items: center;
   background-color: white;
@@ -53,21 +11,20 @@ const AddImageModalWrapper = styled.div`
   box-shadow: -10px 0px 24px rgba(7, 12, 14, 0.1);
 
   ${breakpointsMedia({
-    xs: css`
+  xs: css`
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
       `,
-    md: css`
+  md: css`
       top: 10%;
       bottom: 10%;
       left: 30%;
       right: 30%;
       `,
-  })}
+})}
 `;
-
 AddImageModalWrapper.Top = styled.div`
   display: flex;
   align-self: flex-end;
@@ -76,15 +33,27 @@ AddImageModalWrapper.Top.Button = styled.button`
   background-color: transparent;
   border-color: transparent;
 `;
-AddImageModalWrapper.Image = styled.div`
-  width: 100%;
+AddImageModalWrapper.Image = styled.img`
+  width: ${({ url }) => (url ? null : '100%')};
   height: 50%;
-  background: #0f0f0f0f
+  background: #0f0f0f0f;
 `;
 AddImageModalWrapper.Shenanigan = styled.div`
   width: 100%;
   height: 25%;
-  background: red
+  background: white;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
+  overflow-x: clip;
+`;
+AddImageModalWrapper.Shenanigan.Input = styled.input`
+  width: 70%;
+  height: 30%;
+  border: 1.15601px solid #88989E;
+  box-sizing: border-box;
+  border-radius: 9.24806px;
 `;
 AddImageModalWrapper.Button = styled.button`
   background-color: #D7385E;
@@ -95,9 +64,13 @@ AddImageModalWrapper.Button = styled.button`
   padding-left: 24px;
   padding-right: 24px;
   margin-bottom: 5%;
-`;
 
-const AddButton = styled.button`
+  &:disabled {
+    background-color: #D4D4D4;
+    color: #000;
+  }
+`;
+export const AddButton = styled.button`
   width:32px;
   height:32px;
   border-radius:100%;

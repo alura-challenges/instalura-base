@@ -6,7 +6,7 @@ import Text from '../../foundation/Text';
 import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
-import { AddImageModal } from './AddImageModal';
+import { AddImageModal } from '../ProfileImages/AddImageModal';
 
 const links = [
   {

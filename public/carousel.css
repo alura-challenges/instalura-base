@@ -1,0 +1,192 @@
+.CarouselContainer {
+  display: flex;
+  font-family: unset;
+  position: relative;
+  width: 100%;
+}
+
+.CarouselContainer .CarouselImage .CarouselImageContainer {
+  opacity: 0;
+  -webkit-transition: opacity .4s ease-in-out;
+  -moz-transition: opacity .4s ease-in-out;
+  -o-transition: opacity .4s ease-in-out;
+  transition: opacity .4s ease-in-out;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.CarouselContainer .CarouselImage .CarouselImageContainer .CarouselImageLabel {
+  width: 100%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  padding-bottom: 50px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 19px rgba(0, 0, 0, 1);
+}
+
+.CarouselContainer .CarouselImage .CarouselImageContainer .CarouselImageSubline {
+  width: 100%;
+  display: flex;
+  color: white;
+  position: absolute;
+  justify-content: center;
+  padding-bottom: 30px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+}
+
+.CarouselContainer .CarouselImage .CarouselImageContainer .CarouselImageLabel h2,
+.CarouselContainer .CarouselImage .CarouselImageContainer .CarouselImageSubline h4 {
+  margin: 0em;
+}
+
+.CarouselContainer .CarouselImage .CarouselImageContainer .CarouselImageTextOverlay {
+  width: 100%;
+  display: flex;
+  height: 120px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, .6), transparent);
+}
+
+.CarouselContainer .CarouselImage .CarouselImageCurrent {
+  opacity: 1;
+}
+
+.CarouselContainer .CarouselImage {
+  height: 350px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.CarouselContainer .CarouselArrow {
+  height: 350px;
+  line-height: 350px;
+  vertical-align: middle;
+  position: absolute;
+  background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent);
+  padding: 0 40px;
+  -webkit-transition: opacity .3s ease-in-out;
+  -moz-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  z-index: 2;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.CarouselContainer .CarouselArrow:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.CarouselContainer .CarouselArrow .CarouselArrowIcon {
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  opacity: .7;
+  user-select: none;
+  display: flex;
+}
+
+.CarouselContainer .CarouselArrow .chevron::before {
+  border-style: solid;
+  border-width: 0.25em 0.25em 0 0;
+  content: '';
+  height: 0.45em;
+  left: 0.15em;
+  position: relative;
+  top: 0.15em;
+  transform: rotate(-45deg);
+  vertical-align: top;
+  width: 0.45em;
+  display: flex;
+}
+
+.CarouselContainer .CarouselArrow span.chevron {
+  flex-direction: column;
+  display: flex;
+  flex-grow: 0;
+  justify-content: center;
+}
+
+.CarouselContainer .CarouselArrow .chevron.right:before {
+  right: 0.25em;
+  transform: rotate(45deg);
+}
+
+.CarouselContainer .CarouselArrow .chevron.left:before {
+  left: 0.25em;
+  transform: rotate(-135deg);
+}
+
+.CarouselContainer .ArrowBack {
+  left: 0;
+  right: unset;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .8), transparent);
+}
+
+.CarouselContainer .ArrowNext {
+  right: 0;
+  left: unset;
+  background: linear-gradient(270deg, rgba(0, 0, 0, .8), transparent);
+}
+
+.CarouselContainer .CarouselImageLabel {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.CarouselContainer .CarouselSteps {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  bottom: 10px;
+  z-index: 2;
+}
+
+.CarouselContainer .CarouselSteps .CarouselStep {
+  color: white;
+  margin: 0 10px;
+  opacity: .4;
+  -webkit-transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -o-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
+  user-select: none;
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, .7);
+  font-size: 0.75em;
+}
+
+.CarouselContainer .CarouselSteps .CarouselStep:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+.CarouselContainer .CarouselSteps .CarouselCurrentStep {
+  opacity: .8;
+}
+
+.CarouselContainer .CarouselSteps .CarouselCurrentStep:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+@media (max-width: 599px) {
+  .CarouselContainer {
+    font-size: 90%;
+  }
+}
