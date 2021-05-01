@@ -10,13 +10,13 @@ export class Carousel extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.interval = setInterval(() => this.handleNext(), this.props.imageChangeInterval);
-  }
+  // componentDidMount() {
+  //   this.interval = setInterval(() => this.handleNext(), this.props.imageChangeInterval);
+  // }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
 
   handleNext() {
     const { image_index } = this.state;

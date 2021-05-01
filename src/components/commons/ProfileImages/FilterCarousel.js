@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Carousel } from '../../3rdParty/Carousel';
 
 const filters = {
-  Normal: null,
   1977: 'filter-1977',
   Aden: 'filter-aden',
   Amaro: 'filter-amaro',
@@ -46,8 +45,7 @@ const filters = {
   Willow: 'filter-willow',
   'X-Pro II': 'filter-xpro-ii',
 };
-
-export function FilterCarousel({ url, changeFilter }) {
+const getImagesWithFilters = (url) => {
   // eslint-disable-next-line arrow-body-style
   const allFilters = Object.keys(filters).map((filter) => {
     return {
@@ -56,13 +54,20 @@ export function FilterCarousel({ url, changeFilter }) {
       filter: filters[filter],
     };
   });
+  allFilters.splice(0, 0, {
+    headline: 'Normal',
+    url,
+    filter: null,
+  });
 
+  return allFilters;
+};
+export function FilterCarousel({ url, changeFilter }) {
   return (
     <Carousel
-      imageChangeInterval="5000"
       height="1"
       images={
-        allFilters
+        getImagesWithFilters(url)
       }
       callback={changeFilter}
     />

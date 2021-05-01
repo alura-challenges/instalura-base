@@ -31,6 +31,11 @@ export function AddImageModal() {
   }
 
   function saveNewImage() {
+    console.log({
+      photoUrl: url,
+      filter: customFilter,
+      description: '',
+    });
   }
 
   return (
