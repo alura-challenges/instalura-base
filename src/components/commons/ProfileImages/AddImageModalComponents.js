@@ -9,6 +9,7 @@ export const AddImageModalWrapper = styled.div`
   flex-direction: column;
   place-content: space-around;
   box-shadow: -10px 0px 24px rgba(7, 12, 14, 0.1);
+  overflow-x: clip;
 
   ${breakpointsMedia({
     xs: css`
