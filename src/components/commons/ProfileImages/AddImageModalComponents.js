@@ -11,19 +11,19 @@ export const AddImageModalWrapper = styled.div`
   box-shadow: -10px 0px 24px rgba(7, 12, 14, 0.1);
 
   ${breakpointsMedia({
-  xs: css`
+    xs: css`
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
       `,
-  md: css`
+    md: css`
       top: 10%;
       bottom: 10%;
       left: 30%;
       right: 30%;
       `,
-})}
+  })}
 `;
 AddImageModalWrapper.Top = styled.div`
   display: flex;

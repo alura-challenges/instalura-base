@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '../../foundation/layout/Grid';
+import { Box } from '../../foundation/layout/Box';
 
 export function ProfileImages({ images }) {
   return (
@@ -69,13 +70,19 @@ ProfileImages.propTypes = {
 
 function ProfilePostsImages({ image }) {
   return (
-    <img
-      src={image.photoUrl}
-      alt={image.alt}
+    <Box
+      className={image.filter}
       width="100%"
       height="100%"
-      loading="lazy"
-    />
+    >
+      <img
+        src={image.photoUrl}
+        alt={image.alt}
+        width="100%"
+        height="100%"
+        loading="lazy"
+      />
+    </Box>
   );
 }
 
