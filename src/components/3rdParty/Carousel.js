@@ -29,6 +29,7 @@ export class Carousel extends React.Component {
     const { image_index } = this.state;
     const new_index = image_index === 0 ? this.props.images.length - 1 : image_index - 1;
     this.setState({ image_index: new_index });
+    this.props.callback(this.props.images[new_index].filter);
   }
 
   render() {
