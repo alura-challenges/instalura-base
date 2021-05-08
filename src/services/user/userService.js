@@ -5,22 +5,38 @@ const BASE_URL = 'https://instalura-api.vercel.app';
 
 export const userService = {
   async getProfilePage(ctx) {
-    const url = `${BASE_URL}/api/users/posts`;
+    const { data } = await this.authorizationFetch(ctx, '/api/users/posts', 'Não conseguimos pegar os posts');
+    return {
+      user: {
+        totalLikes: 100,
+      },
+      posts: data,
+    };
+  },
+  async postImage(imageDTO) {
+    return this.authorizationFetch(null, '/api/posts', 'Não foi possivel postar.', 'POST', imageDTO);
+  },
+  async authorizationFetch(ctx, api, errorMsg, method = 'GET', body = null) {
+    const url = `${BASE_URL}${api}`;
+    const options = {
+      GET: null,
+      POST: {
+        method,
+        body,
+      },
+    };
+
     try {
       const token = await authService(ctx).getToken();
-      const response = await HttpClient(url, {
+
+      return await HttpClient(url, {
         headers: {
           authorization: `Bearer ${token}`,
         },
+        ...options[method],
       });
-      return {
-        user: {
-          totalLikes: 100,
-        },
-        posts: response.data,
-      };
     } catch (err) {
-      throw new Error('Não conseguimos pegar os posts');
+      throw new Error(errorMsg);
     }
   },
 };

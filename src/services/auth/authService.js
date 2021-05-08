@@ -2,13 +2,8 @@ import { parseCookies } from 'nookies';
 import jwt from 'jsonwebtoken';
 import { loginService, LOGIN_COOKIE_APP_TOKEN } from '../login/loginService';
 import { HttpClient } from '../../infra/http/HttpClient';
-import { isStagingEnv } from '../../infra/env/isStagingEnv';
 
-const BASE_URL = isStagingEnv
-  // Back End de DEV
-  ? 'https://instalura-api.vercel.app'
-  // Back End de PROD
-  : 'https://instalura-api.vercel.app';
+const BASE_URL = 'https://instalura-api.vercel.app';
 
 export const authService = (ctx) => {
   const cookies = parseCookies(ctx);

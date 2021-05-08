@@ -1,5 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
+import { userService } from '../../../services/user/userService';
 import { Box } from '../../foundation/layout/Box';
 import Modal from '../Modal';
 import { AddButton, AddImageModalWrapper } from './AddImageModalComponents';
@@ -30,12 +31,14 @@ export function AddImageModal() {
     }
   }
 
-  function saveNewImage() {
-    console.log({
+  async function saveNewImage() {
+    // const api = 'https://instalura-api.vercel.app/api/';
+    const coisa = await userService.postImage({
       photoUrl: url,
-      filter: customFilter,
-      description: '',
+      filter: customFilter || 'none',
+      description: 'new image',
     });
+    console.log(coisa);
   }
 
   return (

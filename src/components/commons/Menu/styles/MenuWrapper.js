@@ -127,6 +127,7 @@ MenuWrapper.RightSide = styled.div`
   flex: 1;
   order: 2;
   justify-content: flex-end;
+  z-index: 1000;
 
   ${({ logged }) => logged && css`
       width: 100%;
