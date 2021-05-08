@@ -36,7 +36,7 @@ export const userService = {
         ...options[method],
       });
     } catch (err) {
-      throw new Error(errorMsg);
+      return { error: errorMsg };
     }
   },
 };

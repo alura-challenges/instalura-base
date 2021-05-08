@@ -12,6 +12,7 @@ export function AddImageModal() {
   const [page, setPage] = React.useState(0);
   const [customFilter, setCustomFilter] = React.useState(null);
   const placeholder = '/images/bubbles.svg';
+  const [postReturn, setPostReturn] = React.useState(null);
 
   function handleInput(event) {
     const { value } = event.target;
@@ -26,19 +27,77 @@ export function AddImageModal() {
       case 1:
         saveNewImage();
         break;
+      case 2:
+        handlePostReturn();
+        break;
       default:
         break;
     }
   }
 
   async function saveNewImage() {
-    // const api = 'https://instalura-api.vercel.app/api/';
-    const coisa = await userService.postImage({
+    userService.postImage({
       photoUrl: url,
       filter: customFilter || 'none',
       description: 'new image',
+    }).then((data) => {
+      const timer = setTimeout(() => handlePostReturn(), 4000);
+      setPostReturn({ ...data, timer });
+      setPage(2);
     });
-    console.log(coisa);
+  }
+
+  function handlePostReturn() {
+    clearTimeout(postReturn.timer);
+    return postReturn.error ? setPage(1) : setModalOpen(false);
+  }
+
+  function getShenanigan() {
+    switch (page) {
+      case 0:
+        return (
+          <>
+            <AddImageModalWrapper.Shenanigan.Input
+              placeholder="URL da imagem"
+              onChange={handleInput}
+            />
+            <span>Formatos suportados: jpg, png, svg e xpto.</span>
+          </>
+        );
+      case 1:
+        return (
+          <FilterCarousel
+            url={url}
+            changeFilter={(filter) => setCustomFilter(filter)}
+          />
+        );
+      case 2:
+        return (
+          <div>
+            {postReturn.error ? postReturn.error : 'Post enviado!'}
+          </div>
+        );
+      default:
+        return '';
+    }
+  }
+
+  // `
+  // { "data": { "_id": "6096cc59e6a7cc000847255b", "photoUrl": "https://github.com/JulianaAmoasei.png", "filter": "filter-valencia", "description": "new image", "user": "5fe9035f5bb019a3c62572da", "likes": [], "createdAt": "2021-05-08T17:37:29.680Z", "updatedAt": "2021-05-08T17:37:29.680Z", "__v": 0 }, "timer": 229 }
+
+  // `
+
+  function getButtonText() {
+    switch (page) {
+      case 0:
+        return 'Avançar';
+      case 1:
+        return 'Postar';
+      case 2:
+        return postReturn.error ? 'Tentar Novamente' : 'Fechar';
+      default:
+        return '';
+    }
   }
 
   return (
@@ -72,30 +131,13 @@ export function AddImageModal() {
                 alt="Sua Imagem"
               />
               <AddImageModalWrapper.Shenanigan>
-                {
-                  !page
-                    ? (
-                      <>
-                        <AddImageModalWrapper.Shenanigan.Input
-                          placeholder="URL da imagem"
-                          onChange={handleInput}
-                        />
-                        <span>Formatos suportados: jpg, png, svg e xpto.</span>
-                      </>
-                    )
-                    : (
-                      <FilterCarousel
-                        url={url}
-                        changeFilter={(filter) => setCustomFilter(filter)}
-                      />
-                    )
-                }
+                {getShenanigan()}
               </AddImageModalWrapper.Shenanigan>
               <AddImageModalWrapper.Button
                 onClick={handleClick}
                 disabled={!url}
               >
-                {!page ? 'Avançar' : 'Postar'}
+                {getButtonText()}
               </AddImageModalWrapper.Button>
             </AddImageModalWrapper>
           </Box>
