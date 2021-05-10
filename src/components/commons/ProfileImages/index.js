@@ -6,6 +6,7 @@ import { Box } from '../../foundation/layout/Box';
 import { ImagePost } from './ImagePost';
 import { userService } from '../../../services/user/userService';
 import { authService } from '../../../services/auth/authService';
+import { useOnScreen } from '../../../infra/hooks/screen/useOnScreen';
 
 export function ProfileImages({ images }) {
   const [user, setUser] = React.useState(false);
@@ -80,9 +81,12 @@ ProfileImages.propTypes = {
 };
 
 function ProfilePostsImages({ image, user }) {
-  const [show, setShow] = React.useState(false);
+  const [isHovering, setIsHovering] = React.useState(false);
   const [likes, setLikes] = React.useState(image.likes.length);
   const [liked, setLiked] = React.useState(false);
+  const [visibleOnce, setVisibleOnce] = React.useState(false);
+
+  const [setRef, visible] = useOnScreen({ rootMargin: globalThis.innerHeight / 2 });
 
   async function handleClickLike() {
     userService.likeImage(image._id).then(({ data, error }) => {
@@ -98,6 +102,10 @@ function ProfilePostsImages({ image, user }) {
   }
 
   React.useEffect(() => {
+    setVisibleOnce(visibleOnce || visible);
+  }, [visible]);
+
+  React.useEffect(() => {
     const wasLiked = image.likes?.filter((l) => l.user === user.id).length > 0;
     setLiked(wasLiked);
   }, [user]);
@@ -111,12 +119,13 @@ function ProfilePostsImages({ image, user }) {
       alignItems="center"
       placeContent="center"
       display="flex"
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-      filter={show ? 'brightness(0.7)' : ''}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      filter={isHovering ? 'brightness(0.7)' : ''}
       onClick={handleClickLike}
+      ref={setRef}
     >
-      {show && (
+      {isHovering && (
         <Box
           color={liked ? 'red' : 'white'}
           fontSize="75px"
@@ -131,7 +140,7 @@ function ProfilePostsImages({ image, user }) {
           </Box>
         </Box>
       )}
-      <ImagePost image={image} />
+      {visibleOnce && <ImagePost image={image} />}
     </Box>
   );
 }
