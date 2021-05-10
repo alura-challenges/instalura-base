@@ -6,11 +6,23 @@ export const Box = styled.div`
   ${propToStyle('display')}
   ${propToStyle('flexDirection')}
   ${propToStyle('justifyContent')}
+  ${propToStyle('placeContent')}
+  ${propToStyle('alignItems')}
   ${propToStyle('flexWrap')}
   ${propToStyle('backgroundColor')}
   ${propToStyle('backgroundImage')}
   ${propToStyle('backgroundRepeat')}
   ${propToStyle('backgroundPosition')}
+
+  ${propToStyle('top')}
+  ${propToStyle('bottom')}
+  ${propToStyle('left')}
+  ${propToStyle('right')}
+
+  ${propToStyle('filter')}
+  ${propToStyle('color')}
+  ${propToStyle('fontSize')}
+  ${propToStyle('textAlign')}
 
   ${propToStyle('boxShadow')}
   ${propToStyle('padding')}

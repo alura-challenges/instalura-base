@@ -1,9 +1,21 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '../../foundation/layout/Grid';
 import { Box } from '../../foundation/layout/Box';
+import { ImagePost } from './ImagePost';
+import { userService } from '../../../services/user/userService';
+import { authService } from '../../../services/auth/authService';
 
 export function ProfileImages({ images }) {
+  const [user, setUser] = React.useState(false);
+
+  React.useEffect(() => {
+    authService().getSession().then((session) => {
+      setUser(session);
+    });
+  }, []);
+
   return (
     <div>
       <Grid.Container
@@ -25,7 +37,6 @@ export function ProfileImages({ images }) {
         >
           {images.map((image) => (
             <Grid.Col
-              // eslint-disable-next-line no-underscore-dangle
               key={image._id}
               display="flex"
               flexDirection="column"
@@ -43,7 +54,7 @@ export function ProfileImages({ images }) {
                 md: '16px',
               }}
             >
-              <ProfilePostsImages image={image} />
+              <ProfilePostsImages image={image} user={user} />
             </Grid.Col>
           ))}
         </Grid.Row>
@@ -68,20 +79,59 @@ ProfileImages.propTypes = {
   ).isRequired,
 };
 
-function ProfilePostsImages({ image }) {
+function ProfilePostsImages({ image, user }) {
+  const [show, setShow] = React.useState(false);
+  const [likes, setLikes] = React.useState(image.likes.length);
+  const [liked, setLiked] = React.useState(false);
+
+  async function handleClickLike() {
+    userService.likeImage(image._id).then(({ data, error }) => {
+      // api volta nada quando da o deslike!!!
+      if (error) {
+        setLiked(false);
+        setLikes(likes - 1);
+      } else {
+        setLiked(true);
+        setLikes(data.likes?.length);
+      }
+    });
+  }
+
+  React.useEffect(() => {
+    const wasLiked = image.likes?.filter((l) => l.user === user.id).length > 0;
+    setLiked(wasLiked);
+  }, [user]);
+
   return (
     <Box
       className={image.filter}
       width="100%"
       height="100%"
+      position="relative"
+      alignItems="center"
+      placeContent="center"
+      display="flex"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+      filter={show ? 'brightness(0.7)' : ''}
+      onClick={handleClickLike}
     >
-      <img
-        src={image.photoUrl}
-        alt={image.alt}
-        width="100%"
-        height="100%"
-        loading="lazy"
-      />
+      {show && (
+        <Box
+          color={liked ? 'red' : 'white'}
+          fontSize="75px"
+          textAlign="center"
+          position="absolute"
+        >
+          ♡
+          <Box
+            fontSize="30px"
+          >
+            {likes}
+          </Box>
+        </Box>
+      )}
+      <ImagePost image={image} />
     </Box>
   );
 }

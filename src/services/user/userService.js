@@ -16,6 +16,9 @@ export const userService = {
   async postImage(imageDTO) {
     return this.authorizationFetch(null, '/api/posts', 'Não foi possivel postar.', 'POST', imageDTO);
   },
+  async likeImage(imgId) {
+    return this.authorizationFetch(null, `/api/posts/${imgId}/like`, 'Problema ao dar like.', 'POST', {});
+  },
   async authorizationFetch(ctx, api, errorMsg, method = 'GET', body = null) {
     const url = `${BASE_URL}${api}`;
     const options = {
