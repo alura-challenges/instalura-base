@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import LoginScreenPageObject from '../../../../src/components/screens/app/LoginScreen/LoginScreen.pageObject';
+
 const BASE_URL = 'https://instalura-api.vercel.app';
 
 describe('/pages/app/login/', () => {

@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 const BASE_URL = 'https://instalura-api.vercel.app';
 
 describe('app/profile/', () => {
   describe('adding a new image', () => {
-    it('lol', () => {
+    it('add a image', () => {
       cy.login();
       cy.visit('/app/profile');
     });

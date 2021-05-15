@@ -34,4 +34,3 @@ Cypress.Commands.add('login', () => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-
