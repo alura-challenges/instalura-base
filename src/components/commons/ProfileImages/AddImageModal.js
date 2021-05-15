@@ -73,7 +73,7 @@ export function AddImageModal() {
         );
       case 2:
         return (
-          <div>
+          <div name="postReturn">
             {postReturn.error ? postReturn.error : 'Post enviado!'}
           </div>
         );
@@ -102,11 +102,13 @@ export function AddImageModal() {
 
   return (
     <>
-      <AddButton onClick={() => {
-        setModalOpen(true);
-        setUrl(null);
-        setPage(0);
-      }}
+      <AddButton
+        onClick={() => {
+          setModalOpen(true);
+          setUrl(null);
+          setPage(0);
+        }}
+        name="addImage"
       />
       <Modal
         isOpen={modalOpen}
@@ -114,7 +116,7 @@ export function AddImageModal() {
       >
         {(propsDoModal) => (
           // eslint-disable-next-line react/jsx-props-no-spreading
-          <Box {...propsDoModal}>
+          <Box {...propsDoModal} name="modalAddImage">
             <AddImageModalWrapper>
               <AddImageModalWrapper.Top>
                 <AddImageModalWrapper.Top.Button
