@@ -10,7 +10,18 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
+Cypress.Commands.add('login', () => {
+  cy.request({
+    method: 'POST',
+    url: 'https://instalura-api.vercel.app/api/login',
+    body: {
+      username: 'omariosouto',
+      password: 'senhasegura',
+    },
+  }).then((resp) => {
+    cy.setCookie('LOGIN_COOKIE_APP_TOKEN', resp.body.data.token);
+  });
+});
 //
 //
 // -- This is a child command --
@@ -23,3 +34,4 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+

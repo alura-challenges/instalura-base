@@ -48,7 +48,7 @@ export function AddImageModal() {
   }
 
   function handlePostReturn() {
-    clearTimeout(postReturn.timer);
+    clearTimeout(postReturn?.timer);
     return postReturn.error ? setPage(1) : setModalOpen(false);
   }
 
