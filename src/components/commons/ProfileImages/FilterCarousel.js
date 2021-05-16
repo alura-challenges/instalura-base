@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from '../../3rdParty/Carousel';
 
-const filters = {
+export const filters = {
   1977: 'filter-1977',
   Aden: 'filter-aden',
   Amaro: 'filter-amaro',
@@ -45,7 +45,7 @@ const filters = {
   Willow: 'filter-willow',
   'X-Pro II': 'filter-xpro-ii',
 };
-const getImagesWithFilters = (url) => {
+export const getImagesWithFilters = (url) => {
   // eslint-disable-next-line arrow-body-style
   const allFilters = Object.keys(filters).map((filter) => {
     return {
